@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>বাংলায় নিরাপত্তার জ্ঞান: কোডিং দিয়ে সহজ সাইবার সচেতনতা</title>
+
+  <!-- PrismJS CSS for syntax highlighting -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif, Arial, Helvetica;
+      background: #1e1e1e;
+      color: #ddd;
+      margin: 0;
+      padding: 1rem 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      user-select: text;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #00bcd4;
+    }
+
+    .tutorial-section {
+      border: 1px solid #333;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background: #282c34;
+      cursor: pointer;
+      padding: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .tutorial-section[aria-expanded="true"] {
+      background-color: #333842;
+    }
+
+    .section-header {
+      margin: 0;
+      font-size: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .section-header::after {
+      content: "▼";
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+      color: #00bcd4;
+    }
+
+    .tutorial-section[aria-expanded="true"] .section-header::after {
+      transform: rotate(-180deg);
+    }
+
+    .section-content {
+      margin-top: 1rem;
+      display: none;
+      font-size: 1rem;
+      color: #bbb;
+    }
+
+    .tutorial-section[aria-expanded="true"] .section-content {
+      display: block;
+    }
+
+    pre {
+      background: #21252b;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-top: 0.7rem;
+      color: #f8f8f2;
+    }
+
+    .copy-btn {
+      background: #00bcd4;
+      border: none;
+      color: #1e1e1e;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      float: right;
+      margin-top: -2rem;
+      margin-bottom: 0.5rem;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: #0097a7;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    span.humor {
+      display: inline-block;
+      margin-top: 0.3rem;
+      color: #4caf50;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    table {
+      margin-top: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+
+    table, th, td {
+      border: 1px solid #555;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    /* Responsive font size */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+        font-size: 14px;
+      }
+      .section-header {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>বাংলা সিকিউরিটি টিউটোরিয়াল: কোড + বোধগম্যতা</h1>
+
+  <!-- Section 1 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec1-desc"
+    aria-label="প্লেইনটেক্সট, এনকোডিং, এনক্রিপশন, হ্যাশিং"
+  >
+    <h2 class="section-header">১. প্লেইনটেক্সট, এনকোডিং, এনক্রিপশন ও হ্যাশিং</h2>
+    <div class="section-content" id="sec1-desc" aria-hidden="true">
+      <pre><code class="language-python">
+message = "hello world"  # প্লেইনটেক্সট
+
+import base64
+encoded = base64.b64encode(message.encode())
+print(encoded)  # b'aGVsbG8gd29ybGQ=' (এনকোডেড)
+
+from cryptography.fernet import Fernet
+key = Fernet.generate_key()
+cipher = Fernet(key)
+encrypted = cipher.encrypt(message.encode())
+print(encrypted)  # এনক্রিপ্টেড
+
+decrypted = cipher.decrypt(encrypted).decode()
+print(decrypted)  # ডিক্রিপ্টেড
+
+import hashlib
+hashed = hashlib.sha256(message.encode()).hexdigest()
+print(hashed)  # হ্যাশ
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>message = "hello world"</code><br />
+        আসল বার্তা, যেটা পাঠাতে চাই (Plaintext)। <span class="humor">খাঁচা পাখির মত যা যেমন আছে তেমনই।</span>
+      </p>
+      <p><code>message.encode()</code><br />
+        স্ট্রিং কে বাইটসে রূপান্তর। <span class="humor">বাংলা শব্দকে ইংরেজিতে ট্রান্সলিটারেট করা।</span>
+      </p>
+      <p><code>base64.b64encode(...)</code><br />
+        ডাটাকে সাজিয়ে পাঠযোগ্য রূপে রূপান্তর। <span class="humor">জামা বদলানো, গোপন কিছু না।</span>
+      </p>
+      <p><code>Fernet.generate_key()</code><br />
+        এনক্রিপশনের জন্য গোপন চাবি তৈরি। <span class="humor">গোপন বাক্সের চাবি।</span>
+      </p>
+      <p><code>cipher.encrypt(...)</code><br />
+        বার্তাকে লুকিয়ে ফেলা। <span class="humor">বাক্সে বার্তা ঢোকানো, চাবি ছাড়া কেউ খুলতে পারবে না।</span>
+      </p>
+      <p><code>cipher.decrypt(...)</code><br />
+        বার্তা আবার পড়ার উপযোগী করা। <span class="humor">চাবি দিয়ে বাক্স খোলা।</span>
+      </p>
+      <p><code>hashlib.sha256(...).hexdigest()</code><br />
+        বার্তার একমুখী ফিঙ্গারপ্রিন্ট তৈরি, যা থেকে আসল বার্তা পাওয়া যায় না। <span class="humor">আঙুলের ছাপ, যা দিয়ে আঙুল পাওয়া যায় না।</span>
+      </p>
+
+      <p><b>সংক্ষেপে সম্পর্কিত টেবিল:</b></p>
+      <table style="width: 100%; color: #ddd;">
+        <thead>
+          <tr style="border-bottom: 1px solid #555;">
+            <th>বিষয়</th>
+            <th>কাজ</th>
+            <th>সম্পর্ক</th>
+            <th>উদাহরণ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #555;">
+            <td>প্লেইনটেক্সট</td>
+            <td>আসল বার্তা</td>
+            <td>অন্যান্য সবকিছুর ইনপুট</td>
+            <td>খাঁচা পাখি</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #555;">
+            <td>এনকোডিং</td>
+            <td>সাজানো, পাঠযোগ্য রূপ</td>
+            <td>নিরাপত্তা দেয় না</td>
+            <td>জামা বদলানো</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #555;">
+            <td>এনক্রিপশন</td>
+            <td>গোপন রাখা, কী দিয়ে খুলতে হয়</td>
+            <td>নিরাপদ, কী ছাড়া খুলবে না</td>
+            <td>গোপন বাক্সের চাবি</td>
+          </tr>
+          <tr>
+            <td>হ্যাশিং</td>
+            <td>একমুখী ফিঙ্গারপ্রিন্ট</td>
+            <td>ডিক্রিপ্ট হয় না</td>
+            <td>আঙুলের ছাপ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec2-desc"
+    aria-label="পাসওয়ার্ড ও পাসওয়ার্ড পলিসি"
+  >
+    <h2 class="section-header">২. পাসওয়ার্ড ও পাসওয়ার্ড পলিসি</h2>
+    <div class="section-content" id="sec2-desc" aria-hidden="true">
+      <p>পাসওয়ার্ডের উদাহরণ: <code>dadada, 123456, cute@123</code></p>
+      <p>সহজ পাসওয়ার্ড দ্রুত ক্র্যাক হয়, শক্তিশালী পাসওয়ার্ড মনে রাখা কঠিন।</p>
+      <p><b>পলিসি:</b></p>
+      <ul>
+        <li>লম্বা ও জটিল পাসওয়ার্ড ব্যবহার করুন।</li>
+        <li>বড়/ছোট হাতের অক্ষর, সংখ্যা ও স্পেশাল ক্যারেক্টার মিশ্রিত করুন।</li>
+        <li>নিয়মিত পাসওয়ার্ড পরিবর্তন ও মাল্টি-ফ্যাক্টর অথেনটিকেশন ব্যবহার করুন।</li>
+      </ul>
+      <p><span class="humor">শক্তিশালী পাসওয়ার্ড মানে “myDog@2025!”, সহজ পাসওয়ার্ড মানে “123456” — এটা কিনা আপনার গৃহপালিত ডাক্তার?</span></p>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec3-desc"
+    aria-label="পাসওয়ার্ড সংরক্ষণ"
+  >
+    <h2 class="section-header">৩. পাসওয়ার্ড সংরক্ষণ (Storing Passwords)</h2>
+    <div class="section-content" id="sec3-desc" aria-hidden="true">
+      <pre><code class="language-python">
+# ভুল পদ্ধতি
+password = "mypassword"
+stored = password  # সরাসরি সংরক্ষণ
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>password = "mypassword"</code><br />
+        ইউজার থেকে পাসওয়ার্ড নেওয়া হচ্ছে। <span class="humor">খাঁচা পাখি ধরলাম।</span>
+      </p>
+      <p><code>stored = password</code><br />
+        সরাসরি ডাটাবেইসে রাখছেন — ভয়াবহ ভুল! <span class="humor">চাবি সবাই দেখতে পাচ্ছে!</span></p>
+
+      <pre><code class="language-python">
+# সঠিক পদ্ধতি: হ্যাশ ও সল্ট ব্যবহার
+import hashlib, os
+
+password = "mypassword"
+salt = os.urandom(16)
+hashed = hashlib.pbkdf2_hmac('sha256', password.encode(), salt, 100000)
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>import hashlib, os</code><br />
+        হ্যাশ ও সল্ট তৈরির জন্য লাইব্রেরি।</p>
+      <p><code>password = "mypassword"</code><br />
+        আসল পাসওয়ার্ড।</p>
+      <p><code>salt = os.urandom(16)</code><br />
+        ১৬ বাইট দৈর্ঘ্যের র‍্যান্ডম সল্ট। <span class="humor">মশলা না দিলে খাবার ফ্লেভার হয় না!</span></p>
+      <p><code>password.encode()</code><br />
+        স্ট্রিং থেকে বাইটসে রূপান্তর।</p>
+      <p><code>hashlib.pbkdf2_hmac(...)</code><br />
+        PBKDF2 এলগরিদম, অনেকবার লুপ চালিয়ে শক্তিশালী হ্যাশ তৈরি।</p>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec4-desc"
+    aria-label="পাবলিক কি ক্রিপ্টোগ্রাফি"
+  >
+    <h2 class="section-header">৪. পাবলিক কি ক্রিপ্টোগ্রাফি</h2>
+    <div class="section-content" id="sec4-desc" aria-hidden="true">
+      <pre><code class="language-python">
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+
+private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+public_key = private_key.public_key()
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>from cryptography.hazmat.primitives.asymmetric import rsa, padding</code><br />
+        আরএসএ কী ও প্যাডিং ইমপোর্ট।</p>
+      <p><code>private_key = rsa.generate_private_key(...)</code><br />
+        ২০৪৮ বিটের প্রাইভেট কী জেনারেট। <span class="humor">গোপন চাবি, আপনার পকেটে।</span></p>
+      <p><code>public_key = private_key.public_key()</code><br />
+        পাবলিক কী বের করা। <span class="humor">সবার জন্য খোলা চাবি।</span></p>
+
+      <pre><code class="language-python">
+message = b"secret message"
+encrypted = public_key.encrypt(
+  message,
+  padding.OAEP(
+    mgf=padding.MGF1(hashes.SHA256()),
+    algorithm=hashes.SHA256(),
+    label=None
+  )
+)
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>message = b"secret message"</code><br />
+        বাইনারি মেসেজ।</p>
+      <p><code>public_key.encrypt(...)</code><br />
+        পাবলিক কী দিয়ে এনক্রিপ্ট।</p>
+      <p><code>padding.OAEP(...)</code><br />
+        নিরাপদ প্যাডিং। <span class="humor">বার্তায় গোপন কভারিং।</span></p>
+
+      <pre><code class="language-python">
+decrypted = private_key.decrypt(
+  encrypted,
+  padding.OAEP(
+    mgf=padding.MGF1(hashes.SHA256()),
+    algorithm=hashes.SHA256(),
+    label=None
+  )
+)
+print(decrypted)
+      </code></pre>
+
+      <p><code>private_key.decrypt(...)</code><br />
+        প্রাইভেট কী দিয়ে ডিক্রিপ্ট। <span class="humor">চাবি দিয়ে বাক্স খোলা।</span></p>
+      <p><code>print(decrypted)</code><br />
+        ডিক্রিপ্টেড বার্তা দেখানো।</p>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec5-desc"
+    aria-label="সেশন: আমাকে মনে রাখুন"
+  >
+    <h2 class="section-header">৫. সেশন: আমাকে মনে রাখুন</h2>
+    <div class="section-content" id="sec5-desc" aria-hidden="true">
+      <pre><code class="language-python">
+from flask import Flask, session
+
+app = Flask(__name__)
+app.secret_key = 'সিক্রেটকী'
+
+@app.route('/login')
+def login():
+    session['user'] = 'username'
+    return "লগইন সফল"
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>from flask import Flask, session</code><br />
+        Flask ওয়েব ফ্রেমওয়ার্ক ও সেশন ম্যানেজমেন্ট।</p>
+      <p><code>app = Flask(__name__)</code><br />
+        অ্যাপ তৈরি।</p>
+      <p><code>app.secret_key = 'সিক্রেটকী'</code><br />
+        সেশন সুরক্ষার জন্য সিক্রেট কী।</p>
+      <p><code>@app.route('/login')</code><br />
+        লগইন পেজের রাউট ডেফাইন।</p>
+      <p><code>session['user'] = 'username'</code><br />
+        ইউজারের তথ্য সেশনে রাখুন।</p>
+      <p><code>return "লগইন সফল"</code><br />
+        রেসপন্স পাঠানো।</p>
+      <p><span class="humor">সেশন হলো আপনার ওয়েবসাইটের স্মৃতিশক্তি, বারবার “আপনি কে?” জিজ্ঞাসা করা বন্ধ।</span></p>
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec6-desc"
+    aria-label="সিকিউর ওয়েব হেডারস"
+  >
+    <h2 class="section-header">৬. সিকিউর ওয়েব হেডারস</h2>
+    <div class="section-content" id="sec6-desc" aria-hidden="true">
+      <pre><code class="language-python">
+@app.after_request
+def secure_headers(response):
+    response.headers['Content-Security-Policy'] = "default-src 'self'"
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    return response
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>@app.after_request</code><br />
+        প্রতিটি রেসপন্সের পরে এই ফাংশন চালানো হবে।</p>
+      <p><code>response.headers[...] = ...</code><br />
+        সিকিউরিটি হেডারস সেট করা।</p>
+      <p><code>Content-Security-Policy: default-src 'self'</code><br />
+        শুধু নিজের ডোমেইন থেকে কন্টেন্ট লোড।</p>
+      <p><code>X-Frame-Options: DENY</code><br />
+        ক্লিকজ্যাকিং রোধ।</p>
+      <p><code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code><br />
+        সবসময় HTTPS বাধ্যতামূলক।</p>
+      <p><span class="humor">হেডারস হলো ওয়েবসাইটের দরজা ও জানালা সুরক্ষার তালা।</span></p>
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec7-desc"
+    aria-label="ক্লাউড কনফিগারেশন ভুল এড়ানো"
+  >
+    <h2 class="section-header">৭. ক্লাউড কনফিগারেশন ভুল এড়ানো</h2>
+    <div class="section-content" id="sec7-desc" aria-hidden="true">
+      <ul>
+        <li>পোর্ট খোলা রাখলে হ্যাকারদের জন্য দরজা খুলে দেওয়া।</li>
+        <li>Shodan দিয়ে সার্ভার স্ক্যান করুন।</li>
+        <li>AWS-এ সিকিউরিটি গ্রুপ ভালো কনফিগার করুন।</li>
+        <li>ডিবাগ মোড প্রোডাকশনে বন্ধ রাখুন।</li>
+        <li>সেনসেটিভ ডাটা লগ করবেন না।</li>
+        <li>মনিটরিং চালু রাখুন।</li>
+        <li>সর্বনিম্ন অনুমতি নীতি মানুন।</li>
+        <li>রেট লিমিটিং ও ক্যাপচা ব্যবহার করুন।</li>
+        <li>প্রজেক্ট সিক্রেট ফাইল হিসেবে রাখবেন না, পরিবেশ ভেরিয়েবল ব্যবহার করুন।</li>
+        <li>পুরানো সাবডোমেইন পরিস্কার রাখুন।</li>
+        <li>নিয়মিত সফটওয়্যার আপডেট করুন।</li>
+      </ul>
+      <p><span class="humor">সব দরজা-জানালা বন্ধ রাখুন, নাহলে হ্যাকার এসে চা খেতে বসবে!</span></p>
+    </div>
+  </section>
+
+  <!-- Section 8 -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="sec8-desc"
+    aria-label="রেট লিমিটিং উদাহরণ"
+  >
+    <h2 class="section-header">৮. রেট লিমিটিং উদাহরণ (Flask)</h2>
+    <div class="section-content" id="sec8-desc" aria-hidden="true">
+      <pre><code class="language-python">
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
+
+@app.route('/login')
+@limiter.limit("5 per minute")
+def login():
+    return "৫ বার/মিনিট লগইন অনুমতি।"
+      </code></pre>
+
+      <p><b>লাইন-বাই-লাইন বিশ্লেষণ:</b></p>
+      <p><code>from flask_limiter import Limiter</code><br />
+        রেট লিমিটার ইমপোর্ট।</p>
+      <p><code>key_func=get_remote_address</code><br />
+        ব্যবহারকারীর আইপি ধরে লিমিট।</p>
+      <p><code>@limiter.limit("5 per minute")</code><br />
+        প্রতি মিনিটে ৫ বার রিকোয়েস্ট সীমা।</p>
+      <p><code>def login():</code><br />
+        লগইন ফাংশন।</p>
+      <p><span class="humor">বট মানে অবাঞ্ছিত অতিথি, যারা বার বার দরজা খুলতে চায়!</span></p>
+    </div>
+  </section>
+
+  <!-- Final Summary -->
+  <section
+    class="tutorial-section"
+    tabindex="0"
+    role="button"
+    aria-expanded="false"
+    aria-controls="final-summary"
+    aria-label="ফাইনাল সারাংশ"
+  >
+    <h2 class="section-header">ফাইনাল সারাংশ</h2>
+    <div class="section-content" id="final-summary" aria-hidden="true">
+      <p style="font-size:1.2rem; font-weight:bold; color:#00bcd4;">
+        "প্লেইনটেক্সট হলো আসল বার্তা, এনকোডিং শুধু সাজানো, এনক্রিপশন মানে গোপন বাক্সের চাবি, আর হ্যাশিং হলো সেই বাক্সের ছাপ— যা থেকে আসল চাবি খুঁজে পাওয়া অসম্ভব। তাই নিরাপত্তার সঠিক স্তর বেছে নিন, না হলে ডাটা শুধু সাজানোই থেকে যাবে, বা বাক্স খোলা থেকে যাবে!"
+      </p>
+    </div>
+  </section>
+
+  <!-- PrismJS -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <script>
+    (() => {
+      const sections = document.querySelectorAll(".tutorial-section");
+      sections.forEach((section) => {
+        const header = section.querySelector(".section-header");
+        const content = section.querySelector(".section-content");
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-btn";
+        copyBtn.textContent = "Copy";
+
+        // Add copy button only if code block exists
+        if (content.querySelector("pre code")) {
+          content.insertBefore(copyBtn, content.firstChild);
+
+          copyBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const codeBlock = content.querySelector("pre code");
+            if (!codeBlock) return;
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+              copyBtn.textContent = "Copied!";
+              setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+            });
+          });
+        }
+
+        // Accessibility attributes
+        section.setAttribute("aria-expanded", "false");
+        if (content) content.setAttribute("aria-hidden", "true");
+
+        function toggle() {
+          const expanded = section.getAttribute("aria-expanded") === "true";
+          section.setAttribute("aria-expanded", String(!expanded));
+          if (content) content.setAttribute("aria-hidden", String(expanded));
+        }
+
+        // Click toggles except clicking on copy button
+        section.addEventListener("click", (e) => {
+          if (e.target === copyBtn) return;
+          toggle();
+        });
+
+        // Keyboard toggling
+        section.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
