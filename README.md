@@ -68,7 +68,7 @@ Inspired by the need for localized, clear security education for Bengali speaker
 Contact
 For questions or collaboration, reach out:
 
-GitHub: mdabir1203
-Email: mdabir1203@gmail.com
+**GitHub: github.com/mdabir1203
+Email: mdabir1203@gmail.com******
 
 
