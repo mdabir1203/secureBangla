@@ -23,11 +23,16 @@ The project emphasizes **clarity and intuition**, with detailed Bengali explanat
 
 ## Project Structure
 
-/security-tutorial/
-├── index.html       # Main HTML entrypoint
-├── styles.css       # Stylesheet for layout and UI
-├── main.js          # Vanilla JS for interactivity (accordion, copy buttons, scroll)
-└── assets/          # Optional: images, fonts, and other static resources
+/security-security-tutorial/
+├── index.html
+│   # Main HTML entrypoint
+├── styles.css
+│   # Stylesheet for layout and UI
+├── main.js
+│   # Vanilla JS for interactivity (accordion, copy buttons, scroll)
+└── assets/
+    # Optional: images, fonts, and other static resources
+
 
 
 
