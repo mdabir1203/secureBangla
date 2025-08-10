@@ -45,6 +45,7 @@ The project emphasizes **clarity and intuition**, with detailed Bengali explanat
 git clone https://github.com/yourusername/security-tutorial.git
 cd security-tutorial
 Open index.html directly in your browser.
+```
 
 No build tools or dependencies required.
 
@@ -69,3 +70,5 @@ For questions or collaboration, reach out:
 
 GitHub: mdabir1203
 Email: mdabir1203@gmail.com
+
+
