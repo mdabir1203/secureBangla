@@ -62,12 +62,15 @@ Optimize performance or security
 
 Please fork the repo and create a pull request.
 
+---
+
 Acknowledgments
 Inspired by the need for localized, clear security education for Bengali speakers
+---
 
 Contact
 For questions or collaboration, reach out:
-
+---
 **GitHub: github.com/mdabir1203
 Email: mdabir1203@gmail.com******
 
